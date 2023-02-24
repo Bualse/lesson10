@@ -18,10 +18,11 @@ public class Main {
 //    }
 
     public static void printSymbol() {
-        System.out.println("");
+        System.out.println("=========================================================");
     }
 
     public static void main(String[] args) {
+        System.out.println("Hello world!");
 
 //        int[] issuesOfMonth = {1, 2, 6, 10, 22, 3, 4, 7, 2, 5, 8, 9, 10, 4,};
 //        printSeparator();
@@ -47,9 +48,9 @@ public class Main {
             System.out.println(year + " год — невисокосный год.");
         }
     }
+
     public static void task1() {
         System.out.println("Задача № 1.");
-        printSymbol();
 
         int year = 2000;
         printYear(year);
@@ -57,60 +58,54 @@ public class Main {
         printSymbol();
     }
 
-    public static void printPhoneVersionAndroid(int clientDeviceYear, int clientOs) {
+    public static void printPhoneVersion(int clientDeviceYear, int clientOs) {
         int currentYear = LocalDate.now().getYear();
         if (clientOs == 1) {
-            if (clientDeviceYear < currentYear) {
-                System.out.println("Установите облегченную версию приложения для Android по ссылке");
-            } else {
-                System.out.println("Установите версию приложения для Android по ссылке");
-            }
+            System.out.print("Ваша операционная система Android, ");
+        } else {
+            System.out.print("Ваша операционная система IOS, ");
+        }
+        if (clientDeviceYear < currentYear) {
+            System.out.println("установите облегченную версию приложения по ссылке");
+        } else {
+            System.out.println("установите обычную версию приложения по ссылке");
         }
     }
-    public static void printPhoneVersionOs(int clientDeviceYear, int clientOs) {
-        int currentYear = LocalDate.now().getYear();
-        if (clientOs == 0) {
-            if (clientDeviceYear < currentYear) {
-                System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-            } else {
-                System.out.println("Установите обычную версию приложения для iOS по ссылке");
-            }
-        }
-    }
+
     public static void task2() {
         System.out.println("Задача № 2.");
-        printSymbol();
 
         int clientOs = 1; // (0 — iOS, 1 — Android)
         int clientDeviceYear = 2023;
 
-        printPhoneVersionAndroid(clientDeviceYear, clientOs);
-        printPhoneVersionOs(clientDeviceYear, clientOs);
+        printPhoneVersion(clientDeviceYear, clientOs);
 
         printSymbol();
     }
 
-    public static int printTotalDaysDelivery (int deliveryDistance) {
 
-        if (deliveryDistance > 0 && deliveryDistance <= 20) {
-            System.out.println("Потребуются 1 сутки для доставки");
-        } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
-            System.out.println("Потребуется 2 суток для доставки");
-        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
-            System.out.println("Потребуется 3 суток для доставки");
-        } else if (deliveryDistance > 100) {
-            System.out.println("Доставки нет.");
+    public static void printTotalDaysDelivery(int deliveryDistance) {
+        int deliveryDay = 1;
+
+        if (deliveryDistance > 20) {
+            deliveryDay++;
         }
-        return deliveryDistance;
+        if (deliveryDistance > 60) {
+            deliveryDay++;
+        }
+        if (deliveryDistance > 100) {
+            System.out.println("Доставки нет.");
+            return;
+        }
+        System.out.println("Потребуется дней для доставки: " + deliveryDay);
     }
+
     public static void task3() {
         System.out.println("Задача № 3.");
-        printSymbol();
 
-        int deliveryDistance = 12;
+        int deliveryDistance = 102;
         printTotalDaysDelivery(deliveryDistance);
 
-       printSymbol();
+        printSymbol();
     }
 }
-
